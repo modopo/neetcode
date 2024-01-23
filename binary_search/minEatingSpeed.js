@@ -5,9 +5,7 @@
 // Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
 
 // Return the minimum integer k such that she can eat all the bananas within h hours.
-
  
-
 // Example 1:
 
 // Input: piles = [3,6,7,11], h = 8
@@ -31,24 +29,23 @@ var minEatingSpeed = function(piles, h) {
 
     for (let pile of piles) {
         right = Math.max(right, pile);
-    };
+    }
 
     while (left < right) {
-        let middle = Math.floor((left + right) / 2);
-        let hoursSpent = 0;
+        let mid = Math.floor((left + right) / 2);
+        let timeSpent = 0;
 
         for (let pile of piles) {
-            hoursSpent += Math.ceil(pile / middle);
+            timeSpent += Math.ceil(pile / mid);
         }
 
-        if (hoursSpent <= h) {
-            right = middle;
+        if (timeSpent <= h) {
+            right = mid;
         } else {
-            left = middle + 1;
+            left = mid + 1;
         }
     }
 
-    return left;
-
+    return right;
 
 };
