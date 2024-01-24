@@ -1,5 +1,6 @@
 function search(nums, target) {
-    let l = 0, r = nums.length - 1;
+    let l = 0,
+        r = nums.length - 1;
 
     while (l <= r) {
         let mid = Math.floor((l + r) / 2);
@@ -15,7 +16,7 @@ function search(nums, target) {
                 l = mid + 1;
             }
         } else {
-            if (nums[mid] < target && target <= nums[r]) {
+            if (nums[mid] < target && target <=nums[r]) {
                 l = mid + 1;
             } else {
                 r = mid - 1;
@@ -26,4 +27,4 @@ function search(nums, target) {
     return -1;
 }
 
-console.log(search([3,1], 3));
+console.log(search([3, 1], 3));
