@@ -1,27 +1,27 @@
-https://leetcode.com/problems/top-k-frequent-elements/
-
-function topKFrequent(nums, k) {
+/**
+ * @param {string[]} words
+ * @param {number} k
+ * @return {string[]}
+ */
+var topKFrequent = function(words, k) {
     let map = new Map();
-    let result = [];
-    let temp = [];
 
-    for (let number of nums) {
-        map.set(number, (map.get(number) || 0) + 1);
+    for (let word of words) {
+        map.set(word, (map.get(word) || 0) + 1);
     }
 
-    for (let [number, freq] of map) {
-        temp[freq] = (temp[freq] || new Set()).add(number);
-    }
+    let entries = Array.from(map.entries());
 
-    for (let i = temp.length - 1; i >= 0; i--) {
-        if (temp[i]) {
-            result.push(...temp[i]);
+    entries.sort((a, b) => {
+        if (b[1] !== a[1]) {
+            return b[1] - a[1];
+        } else {
+            return a[0].localCompare(b[0]);
         }
+    });
 
-        if (result.length === k) {
-            break;
-        }
-    }
+    return entries.slice(0, k).map(([key]) => key);
+};
 
-    return result;
-}
+
+console.log(topKFrequent(["i","love","leetcode","i","love","coding"], 2));``
