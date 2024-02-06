@@ -35,4 +35,4 @@ function makeRoom(head, n) {
     p1.next = p1.next.next;
 
     return pre.next;
-}
+};
