@@ -9,10 +9,10 @@ function isBalanced(root) {
         let left = 1 + dfs(node.left);
         let right = 1 + dfs(node.right);
 
-        if (Math.abs(left - right) > 1) return -1;
+        if (Math.abs(left - right) > 1) return Infinity;
 
         return Math.max(left, right);
     };
 
-  return dfs(root) === -1 ? false : true;
+  return dfs(root) === Infinity ? false : true;
 }
